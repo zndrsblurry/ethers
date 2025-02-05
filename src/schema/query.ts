@@ -11,11 +11,7 @@ export const query = new GraphQLObjectType({
         walletAddress: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve: async (_, { walletAddress }) => {
-        const positions = await getAavePositions(walletAddress);
-        return {
-          ...positions,
-          __typename: undefined,
-        };
+        return await getAavePositions(walletAddress);
       },
     },
   },
